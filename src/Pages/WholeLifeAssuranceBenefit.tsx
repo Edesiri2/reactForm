@@ -1,10 +1,12 @@
-import {FC} from 'react'
-import WholeLifeAssuranceForm from '../Utilities/WholeLifeAssuranceForm'
+import { FC } from "react";
+import WholeLifeAssuranceBenefitLayout from "../Utilities/WholeLifeAssuranceBenefitLayout";
 
-const WholeLifeAssuranceBenefit:FC = () => {
+const WholeLifeAssuranceBenefit: FC = () => {
   return (
-    <div className=" flex justify-center place-content-center " ><WholeLifeAssuranceForm title='Whole Life Assurance'/></div>
-  )
-}
+    <div className=" flex justify-center place-content-center ">
+      <WholeLifeAssuranceBenefitLayout title="Whole Life Assurance" />
+    </div>
+  );
+};
 
-export default WholeLifeAssuranceBenefit
+export default WholeLifeAssuranceBenefit;

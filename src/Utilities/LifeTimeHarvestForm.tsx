@@ -129,7 +129,7 @@ const FormCard: FC<FormCardProps> = ({title}) => {
         </div>
         <div className="flex gap-[40rem]  place-content-center bottom-0">
           <Link to="/lifetimeharvest">
-            <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
+            <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>
           </Link>

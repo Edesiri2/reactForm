@@ -21,12 +21,17 @@ const TermAssuranceBenefitLayout: FC<TermAssuranceBenefitLayoutProps> = ({title}
         </section>
         <h1 className=" text-[#900000] mb-2 font-bold">Benefits</h1>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-
-          <FormInputSelector
-            placeholder={"Retirement Age"}
-            defalt={"Retirement Age"}
-            firstOption={"45"}
-            secondOption={"50"}
+          <FormInput
+            onClick={() => {}}
+            placeholder={"Amount to Save"}
+            type={"number"}
+            required={true}
+            onBlur={() => {}}
+            onChange={() => {}}
+            name={""}
+            label={""}
+            pattern={""}
+            errorMessage={""}
           />
           <FormInputSelector
             placeholder={"Payment Frequency"}
@@ -35,37 +40,48 @@ const TermAssuranceBenefitLayout: FC<TermAssuranceBenefitLayoutProps> = ({title}
             secondOption={"Single Premium"}
           />
           <FormInputSelector
-            placeholder={"Payout Frequency"}
-            defalt={"Payout Frequency"}
-            firstOption={"Annually"}
-            secondOption={"Single Premium"}
-          />
-        </div>
-        <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormInputSelector
             placeholder={"Policy Term"}
             defalt={"Policy Term"}
             firstOption={"45"}
             secondOption={"50"}
           />
-
+        </div>
+        <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
-            onClick={() => { } }
-            placeholder={"Target Earnings"}
+            onClick={() => {}}
+            placeholder={"Target Amount"}
             type={"number"}
             required={true}
-            onBlur={() => { } }
-            onChange={() => { } }
-            name={""} label={""} pattern={""} errorMessage={""}          />
-        </div>
+            onBlur={() => {}}
+            onChange={() => {}}
+            name={""}
+            label={""}
+            pattern={""}
+            errorMessage={""}
+          />
 
-        <div className="flex justify-between mt-16 px-4">
+          <FormInput
+            onClick={() => {}}
+            placeholder={"Life Sum Assured"}
+            type={"number"}
+            required={true}
+            onBlur={() => {}}
+            onChange={() => {}}
+            name={""}
+            label={""}
+            pattern={""}
+            errorMessage={""}
+          />
+        </div>
+        <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4 justify-center mt-6">
+          <button className=" rounded-lg bg-gray-400 w-80 lg:w-80 md:w-40 py-2 px-2 text-black border  border-gray-400 hover:border-red-600">Calculate</button></div>
+        <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
           <Link to="/termassurance">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>
           </Link>
-          <Link to="/termassurancebenefit">
+          <Link to="/summary">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Next
             </button>

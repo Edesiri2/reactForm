@@ -1,9 +1,12 @@
-import {FC} from 'react'
-import LifeTimeBenefitLayout from '../Utilities/LifeTimeBenefitLayout'
+import { FC } from "react";
+import LifeTimeBenefitLayout from "../Utilities/LifeTimeBenefitLayout";
 
-const LifeTimeBenefit:FC = () => {
+const LifeTimeBenefit: FC = () => {
   return (
-    <div className=" flex justify-center place-content-center " ><LifeTimeBenefitLayout title='Life Time Harvest'/></div>)
-}
+    <div className=" flex justify-center place-content-center ">
+      <LifeTimeBenefitLayout title="Life Time Harvest" />
+    </div>
+  );
+};
 
-export default LifeTimeBenefit
+export default LifeTimeBenefit;

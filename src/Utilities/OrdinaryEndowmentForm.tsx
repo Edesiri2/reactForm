@@ -3,6 +3,7 @@ import FormInput from "./FormInput";
 import FormInputSelect from "./FormInputSelect";
 import FormInputSelector from "./FormInputSelector";
 import { Link } from "react-router-dom";
+import FormIdSelector from "./FormIdSelector";
 interface FormCardProps {
   title : string
 }
@@ -33,17 +34,15 @@ const FormCard: FC<FormCardProps> = ({title}) => {
             placeholder={"FirstName"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
           <FormInput
             onClick={() => { } }
             placeholder={"MiddleName"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
@@ -51,25 +50,22 @@ const FormCard: FC<FormCardProps> = ({title}) => {
             placeholder={"SurName"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
           {showDOBInput?(<FormInput
             onClick={() => { setShowDOBInput(!showDOBInput); } }
             placeholder={"Date Of Birth"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />):(
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />):(
           <FormInput
                 onClick={() => { } }
                 placeholder={"Date Of Birth"}
                 type={"date"}
                 required={true}
-                name={""}
                 onBlur={() => { } }
-                onChange={() => { } } label={""} errorMessage={""} pattern={""}          />)}
+                onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />)}
           <FormInputSelector
            
             placeholder={"Gender"}
@@ -84,68 +80,56 @@ const FormCard: FC<FormCardProps> = ({title}) => {
             placeholder={"Email"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
           <FormInput
             onClick={() => { } }
             placeholder={"Mobile Number"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
          
           {showInsuranceDate?(<FormInput
             onClick={() => { setShowInsuranceDate(!showInsuranceDate); } }
             placeholder={"Insurance Start Date"}
             type={"text"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />):(
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />):(
           <FormInput
                 onClick={() => { } }
                 placeholder={"Insurance Start Date"}
                 type={"date"}
                 required={true}
-                name={""}
                 onBlur={() => { } }
-                onChange={() => { } } label={""} errorMessage={""} pattern={""}          />)}
+                onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />)}
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormInput
-            onClick={() => { } }
-            placeholder={"Identification Type"}
-            type={"text"}
-            required={true}
-            name={""}
-            onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+        <FormIdSelector
+            placeholder={"Identification Type"} defalt={"Identification Type"} firstOption={"Driver License"} secondOption={"International Passport"} thirdOption={"National Id"}          />
           <FormInput
             onClick={() => { } }
             placeholder={"Identification Number"}
             type={"number"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
           <FormInput
             onClick={() => { } }
             placeholder={"Upload means of ID"}
             type={"file"}
             required={true}
-            name={""}
             onBlur={() => { } }
-            onChange={() => { } } label={""} errorMessage={""} pattern={""}          />
+            onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
         </div>
-        <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
-          <Link to="/termassurance">
+        <div className="flex gap-[40rem]  place-content-center bottom-0">
+          <Link to="/ordinaryendowment">
             <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>
           </Link>
-          <Link to="/termassurancebenefit">
+          <Link to="/ordinaryendowmentbenefit">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Next
             </button>

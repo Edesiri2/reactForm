@@ -2,13 +2,12 @@ import { FC, useState } from "react";
 import FormInput from "./FormInput";
 import FormInputSelect from "./FormInputSelect";
 import FormInputSelector from "./FormInputSelector";
-import FormIdSelector from "./FormIdSelector";
 import { Link } from "react-router-dom";
-interface FormCardProps {
+interface EducationEndowmentFormProps {
   title: string;
 }
 
-const FormCard: FC<FormCardProps> = ({ title }) => {
+const EducationEndowmentForm: FC<EducationEndowmentFormProps> = ({ title }) => {
   const [showDOBInput, setShowDOBInput] = useState(true);
   const [showInsuranceDate, setShowInsuranceDate] = useState(true);
   const [values, setValues] = useState({
@@ -49,8 +48,8 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
             }}
             name={""}
             label={"First Name"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
+            errorMessage={""}
+            pattern={""}
           />
           <FormInput
             onClick={() => {}}
@@ -61,8 +60,8 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
             onChange={(e) => {setValues({...values, middleName:e.target.value})}}
             name={""}
             label={"Middle Name"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
+            errorMessage={""}
+            pattern={""}
           />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
@@ -75,8 +74,8 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
             onChange={(e) => {setValues({...values, surName:e.target.value})}}
             name={""}
             label={"Surname"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
+            errorMessage={""}
+            pattern={""}
           />
 
           {showDOBInput ? (
@@ -127,7 +126,7 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
             onChange={() => {}}
             name={""}
             label={""}
-            errorMessage={"It should be a valid email address!"}
+            errorMessage={""}
             pattern={""}
           />
           <FormInput
@@ -176,8 +175,8 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
           )}
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormIdSelector
-            placeholder={"Identification Type"} defalt={"Identification Type"} firstOption={"Driver License"} secondOption={"International Passport"} thirdOption={"National Id"}          />
+          <FormInputSelector
+            placeholder={"Identification Type"} defalt={"National ID"} firstOption={"Driver License"} secondOption={"International Passport"}          />
           <FormInput
             onClick={() => {}}
             placeholder={"Identification Number"}
@@ -204,12 +203,12 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
           />
         </div>
         <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
-          <Link to="/">
+          <Link to="/educationendowment">
             <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>
           </Link>
-          <Link to="/mor">
+          <Link to="/educationendowmentbenefit">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Next
             </button>
@@ -220,4 +219,4 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
   );
 };
 
-export default FormCard;
+export default EducationEndowmentForm;

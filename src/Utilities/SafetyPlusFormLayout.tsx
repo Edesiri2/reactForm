@@ -2,25 +2,14 @@ import { FC, useState } from "react";
 import FormInput from "./FormInput";
 import FormInputSelect from "./FormInputSelect";
 import FormInputSelector from "./FormInputSelector";
-import FormIdSelector from "./FormIdSelector";
 import { Link } from "react-router-dom";
-interface FormCardProps {
+interface SafetyPlusFormLayoutProps {
   title: string;
 }
 
-const FormCard: FC<FormCardProps> = ({ title }) => {
+const SafetyPlusFormLayout: FC<SafetyPlusFormLayoutProps> = ({ title }) => {
   const [showDOBInput, setShowDOBInput] = useState(true);
-  const [showInsuranceDate, setShowInsuranceDate] = useState(true);
-  const [values, setValues] = useState({
-    firstName: "",
-    middleName: "",
-    surName: "",
-    dob: "",
-    gender: "",
-    email: "",
-    phoneNumber: "",
-  });
-  console.log(values);
+  
   return (
     <div className="h-[fit] w-[full] px-6 py-12">
       <div className="flex flex-col w-[100%]  h-[fit] md:h-[500px]  mt-2 px-16 bg-white rounded-lg shadow-lg ">
@@ -40,45 +29,31 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
           <FormInputSelect placeholder={"Title"} />
           <FormInput
             onClick={() => {}}
-            placeholder={"FirstName"}
+            placeholder={"Surname"}
             type={"text"}
             required={true}
-            onBlur={() => {}}
-            onChange={(e) => {
-              setValues({...values, firstName:e.target.value});
-            }}
             name={""}
-            label={"First Name"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
+            onBlur={() => {}}
+            onChange={() => {}}
+            label={""}
+            pattern={""}
+            errorMessage={""}
           />
           <FormInput
             onClick={() => {}}
-            placeholder={"Middle Name"}
+            placeholder={"First name"}
             type={"text"}
             required={true}
-            onBlur={() => {}}
-            onChange={(e) => {setValues({...values, middleName:e.target.value})}}
             name={""}
-            label={"Middle Name"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
+            onBlur={() => {}}
+            onChange={() => {}}
+            label={""}
+            pattern={""}
+            errorMessage={""}
           />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormInput
-            onClick={() => {}}
-            placeholder={"SurName"}
-            type={"text"}
-            required={true}
-            onBlur={() => {}}
-            onChange={(e) => {setValues({...values, surName:e.target.value})}}
-            name={""}
-            label={"Surname"}
-            errorMessage={"Username should be 3-16 characters and shouldn't include any special character!"}
-            pattern={"/^[a-z ,.'-]+$/i"}
-          />
-
+          
           {showDOBInput ? (
             <FormInput
               onClick={() => {
@@ -87,12 +62,12 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
               placeholder={"Date Of Birth"}
               type={"text"}
               required={true}
-              onBlur={() => {}}
-              onChange={(e) => {setValues({...values, surName:e.target.value})}}
               name={""}
+              onBlur={() => {}}
+              onChange={() => {}}
               label={""}
-              errorMessage={""}
               pattern={""}
+              errorMessage={""}
             />
           ) : (
             <FormInput
@@ -100,14 +75,12 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
               placeholder={"Date Of Birth"}
               type={"date"}
               required={true}
-              onBlur={() => {
-                setShowDOBInput(true);
-              }}
-              onChange={() => {}}
               name={""}
+              onBlur={() => {}}
+              onChange={() => {}}
               label={""}
-              errorMessage={""}
               pattern={""}
+              errorMessage={""}
             />
           )}
           <FormInputSelector
@@ -116,100 +89,92 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
             firstOption={"male"}
             secondOption={"female"}
           />
-        </div>
-        <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormInput
+          
+           <FormInput
             onClick={() => {}}
             placeholder={"Email"}
             type={"text"}
             required={true}
+            name={""}
             onBlur={() => {}}
             onChange={() => {}}
-            name={""}
             label={""}
-            errorMessage={"It should be a valid email address!"}
             pattern={""}
+            errorMessage={""}
           />
-          <FormInput
-            onClick={() => {}}
-            placeholder={"(+234) 80x xxx xxxx"}
-            type={"number"}
-            required={true}
-            onBlur={() => {}}
-            onChange={() => {}}
-            name={""}
-            label={""}
-            errorMessage={"Enter a valid phone number"}
-            pattern={"/^\(\d{3}\) \d{3}-\d{4}$/"}
-          />
-
-          {showInsuranceDate ? (
-            <FormInput
-              onClick={() => {
-                setShowInsuranceDate(!showInsuranceDate);
-              }}
-              placeholder={"Insurance Start Date"}
-              type={"text"}
-              required={true}
-              onBlur={() => {}}
-              onChange={() => {}}
-              name={""}
-              label={""}
-              errorMessage={""}
-              pattern={""}
-            />
-          ) : (
-            <FormInput
-              onClick={() => {}}
-              placeholder={"Insurance Start Date"}
-              type={"date"}
-              required={true}
-              onBlur={() => {
-                setShowInsuranceDate(true);
-              }}
-              onChange={() => {}}
-              name={""}
-              label={""}
-              errorMessage={""}
-              pattern={""}
-            />
-          )}
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
-          <FormIdSelector
-            placeholder={"Identification Type"} defalt={"Identification Type"} firstOption={"Driver License"} secondOption={"International Passport"} thirdOption={"National Id"}          />
-          <FormInput
+        <FormInput
             onClick={() => {}}
-            placeholder={"Identification Number"}
+            placeholder={"234 80 xxx xxxx"}
             type={"number"}
             required={true}
+            name={""}
             onBlur={() => {}}
             onChange={() => {}}
-            name={""}
             label={""}
-            errorMessage={""}
             pattern={""}
+            errorMessage={""}
+          />
+         <FormInputSelector
+            placeholder={"State"}
+            defalt={"Select State"}
+            firstOption={"Abia"}
+            secondOption={"Lagos"}
+          />
+
+<FormInput
+            onClick={() => {}}
+            placeholder={"Occupation"}
+            type={"text"}
+            required={true}
+            name={""}
+            onBlur={() => {}}
+            onChange={() => {}}
+            label={""}
+            pattern={""}
+            errorMessage={""}
+          />
+        </div>
+        <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
+          <FormInput
+            onClick={() => {}}
+            placeholder={"Identification Type"}
+            type={"text"}
+            required={true}
+            name={""}
+            onBlur={() => {}}
+            onChange={() => {}}
+            label={""}
+            pattern={""}
+            errorMessage={""}
+          />
+            <FormInputSelector
+            placeholder={"Identification Type"}
+            defalt={"Identification Type"}
+            firstOption={"Driver Licence"}
+            secondOption={"Interational Passport"}
           />
           <FormInput
             onClick={() => {}}
             placeholder={"Upload means of ID"}
             type={"file"}
             required={true}
+            name={""}
             onBlur={() => {}}
             onChange={() => {}}
-            name={""}
             label={""}
-            errorMessage={""}
             pattern={""}
+            errorMessage={""}
           />
         </div>
         <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
-          <Link to="/">
+          <Link to="/safetyplus">
             <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>
           </Link>
-          <Link to="/mor">
+          <Link to="/safetyplusbenefit">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Next
             </button>
@@ -220,4 +185,4 @@ const FormCard: FC<FormCardProps> = ({ title }) => {
   );
 };
 
-export default FormCard;
+export default SafetyPlusFormLayout;

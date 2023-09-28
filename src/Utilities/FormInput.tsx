@@ -3,8 +3,8 @@ import { FC, ChangeEvent } from "react";
 interface FormInputProps {
   placeholder: string | number;
   name: String;
-  label:String;
-  pattern:String;
+  label: String;
+  pattern: String;
   errorMessage: String;
   type: "text" | "number" | "date" | "file";
   required: boolean;
@@ -39,7 +39,9 @@ const FormInput: FC<FormInputProps> = ({
         placeholder={String(placeholder)}
         pattern={String(pattern)}
       />
-      <span className=" font-[12px] p-[3px] text-red-600 hidden">{errorMessage}</span>
+      <span className=" font-[12px] p-[3px] text-red-600 hidden">
+        {errorMessage}
+      </span>
     </div>
   );
 };
