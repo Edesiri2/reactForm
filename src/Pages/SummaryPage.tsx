@@ -13,26 +13,28 @@ const SummaryPage:FC = () => {
        <h1 className=" text-[#900000]  mb-4 font-bold">
          SUMMARY
         </h1>
-        <h1 className=" text-[gray]  mb-2 font-bold">
+        <h2 className=" text-[gray]  mb-2 font-bold">
          Personal Information
-        </h1>
+        </h2>
     <div className="flex flex-col w-[100%]  h-[fit] md:h-[700px]  mt-2 px-8 bg-white rounded-lg shadow-lg ">
   
         <div className=" place-content-center  p-2 py-2 px-2 md:flex md:gap-6 md:px-4 ">
-          <FormInputSelect placeholder={"Title"} />
+          <FormInputSelect disabled={true} placeholder={"Mr"} />
           <FormInput
             onClick={() => { } }
-            placeholder={"FirstName"}
+            placeholder={"Eric"}
             type={"text"}
             required={true}
             name={''}
+            disabled={true}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
           <FormInput
             onClick={() => { } }
-            placeholder={"MiddleName"}
+            placeholder={"Steve"}
             type={"text"}
             required={true}
+            disabled={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
@@ -40,9 +42,10 @@ const SummaryPage:FC = () => {
         <div className=" place-content-center p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
             onClick={() => { } }
-            placeholder={"SurName"}
+            placeholder={"John"}
             type={"text"}
             required={true}
+            disabled={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
@@ -52,38 +55,41 @@ const SummaryPage:FC = () => {
             type={"text"}
             required={true}
             name={''}
+            disabled={true}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />):(
           <FormInput
                 onClick={() => { } }
-                placeholder={"Date Of Birth"}
+                placeholder={"12/10/1960"}
                 type={"date"}
                 required={true}
+                disabled={true}
                 name={''}
                 onBlur={() => { } }
                 onChange={() => { } } label={""} pattern={""} errorMessage={""}          />)}
           <FormInputSelector
            
-            placeholder={"Gender"}
+            placeholder={"male"}
             defalt={"Select Gender"}
             firstOption={"male"}
-            secondOption={"female"}
-          />
+            secondOption={"female"} disabled={true}          />
         </div>
         <div className=" place-content-center p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
             onClick={() => { } }
-            placeholder={"Email"}
+            placeholder={"ericjohn@gmail.com"}
             type={"text"}
+            disabled={true}
             required={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
           <FormInput
             onClick={() => { } }
-            placeholder={"Mobile Number"}
+            placeholder={"234 805 0987"}
             type={"text"}
             required={true}
+            disabled={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
@@ -101,6 +107,7 @@ const SummaryPage:FC = () => {
                 placeholder={"Insurance Start Date"}
                 type={"date"}
                 required={true}
+                disabled={true}
                 name={''}
                 onBlur={() => { } }
                 onChange={() => { } } label={""} pattern={""} errorMessage={""}          />)}
@@ -108,16 +115,18 @@ const SummaryPage:FC = () => {
         <div className=" place-content-center p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
             onClick={() => { } }
-            placeholder={"Identification Type"}
+            placeholder={"National Id"}
             type={"text"}
             required={true}
+            disabled={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
           <FormInput
             onClick={() => { } }
-            placeholder={"Identification Number"}
+            placeholder={"cvhwe324weqw"}
             type={"number"}
+            disabled={true}
             required={true}
             name={''}
             onBlur={() => { } }
@@ -127,17 +136,19 @@ const SummaryPage:FC = () => {
             placeholder={"Upload means of ID"}
             type={"file"}
             required={true}
+            disabled={true}
             name={''}
             onBlur={() => { } }
             onChange={() => { } } label={""} pattern={""} errorMessage={""}          />
         </div>
-        <div className=' '> <h1 className=" place-content-center text-[gray] flex  mb-2 font-bold">Benefits</h1>
+        <div className=' '> <h2 className=" place-content-center text-[gray] flex  mb-2 font-bold">Benefits</h2>
         <div className=" place-content-center p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
             onClick={() => {}}
-            placeholder={"Amount to Save"}
+            placeholder={"N100,000"}
             type={"number"}
             required={true}
+            disabled={true}
             onBlur={() => {}}
             onChange={() => {}}
             name={""}
@@ -146,22 +157,20 @@ const SummaryPage:FC = () => {
             errorMessage={""}
           />
           <FormInputSelector
-            placeholder={"Payment Frequency"}
-            defalt={"Payment Frequency"}
-            firstOption={"Annualy"}
-            secondOption={"Single Premium"}
-          />
+              placeholder={"Payment Frequency"}
+              defalt={"Annual"}
+              firstOption={"Annualy"}
+              secondOption={"Single Premium"} disabled={true}          />
           <FormInputSelector
-            placeholder={"Policy Term"}
-            defalt={"Policy Term"}
-            firstOption={"45"}
-            secondOption={"50"}
-          />
+              placeholder={"Policy Term"}
+              defalt={"2years"}
+              firstOption={"45"}
+              secondOption={"50"} disabled={true}          />
         </div>
-        <div className=" place-content-center p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
+        <div className=" ml-24 p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
             onClick={() => {}}
-            placeholder={"Target Amount"}
+            placeholder={"N50,000"}
             type={"number"}
             required={true}
             onBlur={() => {}}
@@ -186,8 +195,8 @@ const SummaryPage:FC = () => {
           />
         </div>
        
-        <div className="flex gap-[40rem]  place-content-center  bottom-0 mt-16">
-          <Link to="">
+        <div className="flex gap-[4rem] justify-end w-[90%] bottom-0 mt-8">
+          <Link to="/">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Prev
             </button>

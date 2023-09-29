@@ -28,7 +28,7 @@ const FormCard: FC<FormCardProps> = ({title}) => {
           Personal Information
         </h1>
         <div className="  p-2 py-2 px-2 md:flex md:gap-6 md:px-4 ">
-          <FormInputSelect placeholder={"Title"} />
+          <FormInputSelect placeholder={"Title"} disabled={false} />
           <FormInput
             onClick={() => { } }
             placeholder={"FirstName"}
@@ -71,8 +71,7 @@ const FormCard: FC<FormCardProps> = ({title}) => {
             placeholder={"Gender"}
             defalt={"Select Gender"}
             firstOption={"male"}
-            secondOption={"female"}
-          />
+            secondOption={"female"} disabled={undefined}          />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
@@ -123,7 +122,7 @@ const FormCard: FC<FormCardProps> = ({title}) => {
             onBlur={() => { } }
             onChange={() => { } } name={""} label={""} errorMessage={""} pattern={""}         />
         </div>
-        <div className="flex gap-[40rem]  place-content-center bottom-0">
+        <div className="flex gap-[4rem] justify-end w-[90%] bottom-0 mt-8">
           <Link to="/ordinaryendowment">
             <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev

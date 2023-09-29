@@ -37,14 +37,12 @@ const WholeLifeAssuranceBenefitLayout: FC<WholeLifeAssuranceBenefitLayoutProps> 
             placeholder={"Payment Frequency"}
             defalt={"Payment Frequency"}
             firstOption={"Annualy"}
-            secondOption={"Single Premium"}
-          />
+            secondOption={"Single Premium"} disabled={false}          />
           <FormInputSelector
             placeholder={"Policy Term"}
             defalt={"Policy Term"}
             firstOption={"45"}
-            secondOption={"50"}
-          />
+            secondOption={"50"} disabled={false}          />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
@@ -75,7 +73,7 @@ const WholeLifeAssuranceBenefitLayout: FC<WholeLifeAssuranceBenefitLayoutProps> 
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4 justify-center mt-6">
           <button className=" rounded-lg bg-gray-400 w-80 lg:w-80 md:w-40 py-2 px-2 text-black border  border-gray-400 hover:border-red-600">Calculate</button></div>
-        <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
+          <div className="flex gap-[4rem] justify-end w-[90%] bottom-0 mt-8">
           <Link to="/wholelife">
             <button className="bg-[#900000] w-20 p-1 mt-8 px-4 text-white">
               Prev

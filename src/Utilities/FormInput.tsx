@@ -8,6 +8,7 @@ interface FormInputProps {
   errorMessage: String;
   type: "text" | "number" | "date" | "file";
   required: boolean;
+  disabled?: boolean;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
   onClick: (event: React.MouseEvent<HTMLInputElement>) => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -16,6 +17,7 @@ interface FormInputProps {
 const FormInput: FC<FormInputProps> = ({
   placeholder,
   name,
+  disabled,
   type,
   label,
   pattern,
@@ -36,12 +38,14 @@ const FormInput: FC<FormInputProps> = ({
         onChange={onChange}
         onClick={onClick}
         onBlur={onBlur}
+        disabled={disabled}
         placeholder={String(placeholder)}
         pattern={String(pattern)}
+        title={errorMessage.toString()}
       />
-      <span className=" font-[12px] p-[3px] text-red-600 hidden">
+      {/* <span className=" font-[12px] p-[3px] text-red-600 hidden">
         {errorMessage}
-      </span>
+      </span> */}
     </div>
   );
 };

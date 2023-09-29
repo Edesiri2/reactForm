@@ -36,7 +36,7 @@ const EducationEndowmentForm: FC<EducationEndowmentFormProps> = ({ title }) => {
           Personal Information
         </h1>
         <div className="  p-2 py-2 px-2 md:flex md:gap-6 md:px-4 ">
-          <FormInputSelect placeholder={"Title"} />
+          <FormInputSelect placeholder={"Title"} disabled={false} />
           <FormInput
             onClick={() => {}}
             placeholder={"FirstName"}
@@ -113,8 +113,7 @@ const EducationEndowmentForm: FC<EducationEndowmentFormProps> = ({ title }) => {
             placeholder={"Gender"}
             defalt={"Select Gender"}
             firstOption={"male"}
-            secondOption={"female"}
-          />
+            secondOption={"female"} disabled={undefined}          />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInput
@@ -176,7 +175,7 @@ const EducationEndowmentForm: FC<EducationEndowmentFormProps> = ({ title }) => {
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInputSelector
-            placeholder={"Identification Type"} defalt={"National ID"} firstOption={"Driver License"} secondOption={"International Passport"}          />
+            placeholder={"Identification Type"} defalt={"National ID"} firstOption={"Driver License"} secondOption={"International Passport"} disabled={undefined}          />
           <FormInput
             onClick={() => {}}
             placeholder={"Identification Number"}
@@ -202,7 +201,7 @@ const EducationEndowmentForm: FC<EducationEndowmentFormProps> = ({ title }) => {
             pattern={""}
           />
         </div>
-        <div className="flex gap-[40rem]  place-content-center  bottom-0 ">
+        <div className="flex gap-[4rem] justify-end w-[90%] bottom-0 mt-8">
           <Link to="/educationendowment">
             <button className="bg-[gray] w-20 p-1 mt-8 px-4 text-white">
               Prev
