@@ -26,28 +26,24 @@ const SafetyPlusBenefitLayout: FC<SafetyPlusBenefitLayoutProps> = ({title}) => {
             placeholder={"Retirement Age"}
             defalt={"Retirement Age"}
             firstOption={"45"}
-            secondOption={"50"}
-          />
+            secondOption={"50"} disabled={undefined}          />
           <FormInputSelector
             placeholder={"Payment Frequency"}
             defalt={"Payment Frequency"}
             firstOption={"Annualy"}
-            secondOption={"Single Premium"}
-          />
+            secondOption={"Single Premium"} disabled={undefined}          />
           <FormInputSelector
             placeholder={"Payout Frequency"}
             defalt={"Payout Frequency"}
             firstOption={"Annually"}
-            secondOption={"Single Premium"}
-          />
+            secondOption={"Single Premium"} disabled={undefined}          />
         </div>
         <div className=" p-2 py-2 px-2 md:flex md:gap-6 md:px-4">
           <FormInputSelector
             placeholder={"Policy Term"}
             defalt={"Policy Term"}
             firstOption={"45"}
-            secondOption={"50"}
-          />
+            secondOption={"50"} disabled={undefined}          />
 
           <FormInput
             onClick={() => { } }

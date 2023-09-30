@@ -19,7 +19,6 @@ const FormInput: FC<FormInputProps> = ({
   name,
   disabled,
   type,
-  label,
   pattern,
   errorMessage,
   required,

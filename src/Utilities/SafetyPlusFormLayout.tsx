@@ -26,7 +26,7 @@ const SafetyPlusFormLayout: FC<SafetyPlusFormLayoutProps> = ({ title }) => {
           Personal Information
         </h1>
         <div className="  p-2 py-2 px-2 md:flex md:gap-6 md:px-4 ">
-          <FormInputSelect placeholder={"Title"} />
+          <FormInputSelect placeholder={"Title"} disabled={false} />
           <FormInput
             onClick={() => {}}
             placeholder={"Surname"}
@@ -87,8 +87,7 @@ const SafetyPlusFormLayout: FC<SafetyPlusFormLayoutProps> = ({ title }) => {
             placeholder={"Gender"}
             defalt={"Select Gender"}
             firstOption={"male"}
-            secondOption={"female"}
-          />
+            secondOption={"female"} disabled={undefined}          />
           
            <FormInput
             onClick={() => {}}
@@ -120,8 +119,7 @@ const SafetyPlusFormLayout: FC<SafetyPlusFormLayoutProps> = ({ title }) => {
             placeholder={"State"}
             defalt={"Select State"}
             firstOption={"Abia"}
-            secondOption={"Lagos"}
-          />
+            secondOption={"Lagos"} disabled={undefined}          />
 
 <FormInput
             onClick={() => {}}
@@ -153,8 +151,7 @@ const SafetyPlusFormLayout: FC<SafetyPlusFormLayoutProps> = ({ title }) => {
             placeholder={"Identification Type"}
             defalt={"Identification Type"}
             firstOption={"Driver Licence"}
-            secondOption={"Interational Passport"}
-          />
+            secondOption={"Interational Passport"} disabled={undefined}          />
           <FormInput
             onClick={() => {}}
             placeholder={"Upload means of ID"}
