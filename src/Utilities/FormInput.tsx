@@ -5,8 +5,9 @@ interface FormInputProps {
   name: String;
   label: String;
   pattern: String;
-  errorMessage: String;
-  type: "text" | "number" | "date" | "file";
+  onKeyDown: any
+  errorMessage: any;
+  type: "text" | "number" | "date" | "file" | "tel" ;
   required: boolean;
   disabled?: boolean;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -22,13 +23,13 @@ const FormInput: FC<FormInputProps> = ({
   pattern,
   errorMessage,
   required,
+  onKeyDown,
   onBlur,
   onChange,
   onClick,
 }) => {
   return (
     <div className="">
-      {/* <label className=" font-[12px] text-gray-200 block md:hidden lg:hidden">{label}</label> */}
       <input
         required={required}
         className="w-80 lg:w-80 md:w-40 py-2 px-2 text-black border  border-gray-400 hover:border-red-600"
@@ -37,14 +38,14 @@ const FormInput: FC<FormInputProps> = ({
         onChange={onChange}
         onClick={onClick}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
         disabled={disabled}
         placeholder={String(placeholder)}
         pattern={String(pattern)}
-        title={errorMessage.toString()}
       />
-      {/* <span className=" font-[12px] p-[3px] text-red-600 hidden">
+      <span className=" font-[12px] p-[3px] text-red-600 hidden">
         {errorMessage}
-      </span> */}
+      </span>
     </div>
   );
 };
