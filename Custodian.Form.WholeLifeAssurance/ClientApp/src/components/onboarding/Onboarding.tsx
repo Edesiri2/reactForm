@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { steps } from "./Steps";
 import PersonalInformation from "../personal-information/PersonalInformation";
 import Benefit from "../benefit/Benefit";
+import {
+  benefitDataValidation,
+  personalInformationValidation,
+} from "../../validation/validation";
+import Summary from "../summary/Summary";
 
 const Onboarding = () => {
   const [OnboardingSteps, setOnboardingSteps] = useState<any[]>(steps);
@@ -9,28 +14,55 @@ const Onboarding = () => {
   const [isModal, setIsModal] = useState(false);
   const [modalData, setModalData] = useState<string[]>([]);
   const [personalInformation, setPersonalInformation] = useState<any>(null);
+  const [benefitData, setBenefitData] = useState<any>(null);
 
   const handleIsActive = (active: any) => {
     setIsActive(active);
   };
-  const handlePersonalData = () => {
-    alert("first");
+  const handlePersonalData = (data: any) => {
+    setPersonalInformation(data);
+    console.log(data);
+  };
+  const handleBenefitData = (data: any) => {
+    setBenefitData(data);
+    console.log(data);
   };
   const handleModal = () => {
     setIsModal(!isModal);
   };
-  const handleNext = (active: any) => {
-    setOnboardingSteps((prevArray) => {
-      const updated = [...prevArray];
-      updated[active].isComplete = true;
-      return updated;
-    });
+  const handleNext = async (active: any) => {
+    const bValue = await benefitDataValidation
+      .validate(benefitData)
+      .catch((err) => {
+        alert(err.errors);
+      });
 
-    if (steps.length - 1 > active) {
-      console.log(active);
-      // console.log(steps.length);
-      setIsActive(active + 1);
-      console.log(OnboardingSteps);
+    if (steps[active].title === "Personal Information") {
+      const pValue = await personalInformationValidation
+        .validate(personalInformation)
+        .catch((err) => {
+          alert(err.errors);
+        });
+      if (pValue) {
+        setOnboardingSteps((prevArray) => {
+          const updated = [...prevArray];
+          updated[active].isComplete = true;
+          return updated;
+        });
+
+        if (steps.length - 1 > active) {
+          setIsActive(active + 1);
+        }
+      }
+    } else if (steps[active].title === "Benefit" && bValue) {
+      setOnboardingSteps((prevArray) => {
+        const updated = [...prevArray];
+        updated[active].isComplete = true;
+        return updated;
+      });
+      if (steps.length - 1 > active) {
+        setIsActive(active + 1);
+      }
     }
   };
 
@@ -50,7 +82,7 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="w-screen h-screen px-[10rem] py-[2rem] flex flex-col">
+    <div className="w-screen h-screen px-[7rem] py-[2rem] flex flex-col">
       <div className="bg-[#fff] w-full h-[5rem] mb-[2rem]">
         <div className="flex flex-row items-center h-full">
           {OnboardingSteps.map((step: any, index: any) => (
@@ -95,29 +127,33 @@ const Onboarding = () => {
         </div>
       </div>
       <div className="relative bg-[#fff] h-full w-[100vw - 20rem] overflow-hidden">
-        <div className="h-full w-[100vw - 20rem] transition-all duration-1000 overflow-x-hidden">
+        <div className="h-full w-[100vw - 15rem] transition-all duration-1000 overflow-x-hidden">
           {isActive === 0 ? (
             <div className={`h-full w-full`}>
               <div className="">
-                <PersonalInformation handlePersonalData={handlePersonalData} />
-                {/* <QuoteComputation
-                  handleModal={handleModal}
-                  modalData={modalData}
-                /> */}
+                <PersonalInformation
+                  handlePersonalData={handlePersonalData}
+                  oldData={personalInformation}
+                />
               </div>
             </div>
           ) : null}
           {isActive === 1 ? (
             <div className={`h-full w-full px-4`}>
               <div>
-                <Benefit />
-                {/* <SelectPlan /> */}
+                <Benefit
+                  handleBenefitData={handleBenefitData}
+                  oldData={benefitData}
+                />
               </div>
             </div>
           ) : null}
           {isActive === 2 ? (
-            <div className={`h-full w-full px-4`}>
-              <div>{/* <CustomerDetails /> */}</div>
+            <div className={`h-full w-full px-2`}>
+              <Summary
+                personalData={personalInformation}
+                benefitData={benefitData}
+              />
             </div>
           ) : null}
         </div>
@@ -133,7 +169,9 @@ const Onboarding = () => {
           {isActive < steps.length - 1 ? (
             <button
               className="bg-[#A73439] px-[2rem] py-[.5rem] rounded-lg text-[#fff] hover:bg-[#A73439]/90"
-              onClick={() => handleNext(isActive)}
+              onClick={() => {
+                handleNext(isActive);
+              }}
             >
               Next
             </button>
