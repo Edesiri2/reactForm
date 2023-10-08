@@ -2,13 +2,13 @@ import { Formik } from "formik";
 import { Title } from "../data/title.data";
 import { useState } from "react";
 
-const Benefit = ({ handleBenefitData }: any) => {
+const Benefit = ({ handleBenefitData, oldData }: any) => {
   const [benefitData, setBenefitData] = useState({
-    amountToSave: "",
-    paymentFrequency: "",
-    policyTerm: "",
-    targetAmount: "",
-    lifeSumAssured: "",
+    amountToSave: oldData&& oldData.amountToSave,
+    paymentFrequency: oldData&& oldData.paymentFrequency,
+    policyTerm: oldData&& oldData.policyTerm,
+    targetAmount: oldData&& oldData.targetAmount,
+    lifeSumAssured: oldData&& oldData.lifeSumAssured,
   });
 
   const handleChange = (e: any) => {
@@ -27,7 +27,7 @@ const Benefit = ({ handleBenefitData }: any) => {
               placeholder="Amount To Save"
               name="amountToSave"
               onChange={handleChange}
-              defaultValue={benefitData.amountToSave}
+              defaultValue={benefitData?.amountToSave}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -37,7 +37,7 @@ const Benefit = ({ handleBenefitData }: any) => {
                 id="grid-state"
                 name="paymentFrequency"
                 onChange={handleChange}
-                defaultValue={benefitData.paymentFrequency}
+                defaultValue={benefitData?.paymentFrequency}
               >
                 <option>--- Select Payment Frequency ---</option>
                 <option value="annualy">Annualy</option>
@@ -61,7 +61,7 @@ const Benefit = ({ handleBenefitData }: any) => {
                 id="grid-state"
                 name="policyTerm"
                 onChange={handleChange}
-                defaultValue={benefitData.policyTerm}
+                defaultValue={benefitData?.policyTerm}
               >
                 <option>--- Select Policy Term ---</option>
                 <option value="45">45</option>
@@ -88,7 +88,7 @@ const Benefit = ({ handleBenefitData }: any) => {
               placeholder="Target Amount"
               name="targetAmount"
               onChange={handleChange}
-              defaultValue={benefitData.targetAmount}
+              defaultValue={benefitData?.targetAmount}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -99,7 +99,7 @@ const Benefit = ({ handleBenefitData }: any) => {
               placeholder="Life Sum Assured"
               name="lifeSumAssured"
               onChange={handleChange}
-              defaultValue={benefitData.lifeSumAssured}
+              defaultValue={benefitData?.lifeSumAssured}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
