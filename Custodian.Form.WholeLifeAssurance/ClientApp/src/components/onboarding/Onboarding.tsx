@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { steps } from "./Steps";
-import PersonalInformation from "../personal-information/PersonalInformation";
+
 import Benefit from "../benefit/Benefit";
-import {
-  benefitDataValidation,
-  personalInformationValidation,
-} from "../../validation/validation";
+import { benefitDataValidation } from "../../validation/validation";
 import Summary from "../summary/Summary";
+import personalInformationValidation from "../../validation/personalData.validation";
+import PersonalInformation from "../personal-information/PersonalInformation";
+import { useFormik } from "formik";
 
 const Onboarding = () => {
   const [OnboardingSteps, setOnboardingSteps] = useState<any[]>(steps);
@@ -15,6 +15,7 @@ const Onboarding = () => {
   const [modalData, setModalData] = useState<string[]>([]);
   const [personalInformation, setPersonalInformation] = useState<any>(null);
   const [benefitData, setBenefitData] = useState<any>(null);
+  const [error, setError] = useState({});
 
   const handleIsActive = (active: any) => {
     setIsActive(active);
@@ -30,31 +31,14 @@ const Onboarding = () => {
   const handleModal = () => {
     setIsModal(!isModal);
   };
+
   const handleNext = async (active: any) => {
-    const bValue = await benefitDataValidation
-      .validate(benefitData)
-      .catch((err) => {
-        alert(err.errors);
-      });
+    const { error: pe, value } =
+      personalInformationValidation(personalInformation);
 
-    if (steps[active].title === "Personal Information") {
-      const pValue = await personalInformationValidation
-        .validate(personalInformation)
-        .catch((err) => {
-          alert(err.errors);
-        });
-      if (pValue) {
-        setOnboardingSteps((prevArray) => {
-          const updated = [...prevArray];
-          updated[active].isComplete = true;
-          return updated;
-        });
-
-        if (steps.length - 1 > active) {
-          setIsActive(active + 1);
-        }
-      }
-    } else if (steps[active].title === "Benefit" && bValue) {
+    if (pe === undefined) {
+      setError({});
+      alert("Hello world!");
       setOnboardingSteps((prevArray) => {
         const updated = [...prevArray];
         updated[active].isComplete = true;
@@ -63,6 +47,15 @@ const Onboarding = () => {
       if (steps.length - 1 > active) {
         setIsActive(active + 1);
       }
+    } else {
+      const e: any[] = pe.details;
+      let newError = {};
+      e.forEach((item) => {
+        newError = { ...newError, [item.context.label]: item.message };
+      });
+
+      console.log("Error:", newError);
+      setError(newError);
     }
   };
 
@@ -134,6 +127,7 @@ const Onboarding = () => {
                 <PersonalInformation
                   handlePersonalData={handlePersonalData}
                   oldData={personalInformation}
+                  error={error}
                 />
               </div>
             </div>
