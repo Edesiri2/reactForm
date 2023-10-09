@@ -1,32 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Formik } from "formik";
+import React, { useEffect, useRef, useState } from "react";
+import { Formik, useFormik } from "formik";
 import { Title } from "../data/title.data";
 
-const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
-  const [personalData, setPersonalData] = useState({
-    title: oldData && oldData.title,
-    firstName: oldData && oldData.firstName,
-    middleName: oldData && oldData.middleName,
-    surname: oldData && oldData.surname,
-    dob: oldData && oldData.dob,
-    gender: oldData && oldData.gender,
-    email: oldData && oldData.email,
-    phoneNumber: oldData && oldData.phoneNumber,
-    insuranceStartDate: oldData && oldData.insuranceStartDate,
-    IdType: oldData && oldData.IdType,
-    IdNumber: oldData && oldData.IdNumber,
-    file: oldData && oldData.file,
-  });
-
-  const handleChange = (e: any) => {
-    // e.prevent.default();
-    setPersonalData({ ...personalData, [e.target.name]: e.target.value });
-    handlePersonalData({ ...personalData, [e.target.name]: e.target.value });
-  };
-
-  // useEffect(() => {
-  //   console.log("Error:", typeof error.ValidationError);
-  // });
+const PersonalInformation = ({ formik }: any) => {
   return (
     <div>
       <div>
@@ -37,8 +13,8 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 name="title"
-                onChange={handleChange}
-                defaultValue={personalData?.title}
+                onChange={formik.handleChange}
+                defaultValue={formik.values?.title}
               >
                 <option>--- Select Title ---</option>
                 {Title.map((item, index) => (
@@ -57,8 +33,10 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                 </svg>
               </div>
             </div>
-            {error && error.title && (
-              <p className="text-[12px] text-[#ff3333]">{error.title}</p>
+            {formik.errors.title && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.title}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3 flex flex-col">
@@ -68,11 +46,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="text"
               placeholder="Firstname"
               name="firstName"
-              onChange={handleChange}
-              defaultValue={personalData?.firstName}
+              onChange={formik.handleChange}
+              defaultValue={formik.values.firstName}
             />
-            {error && error.firstName && (
-              <p className="text-[12px] text-[#ff3333]">{error.firstName}</p>
+            {formik.errors.firstName && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.firstName}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -82,11 +62,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="text"
               placeholder="Middlename"
               name="middleName"
-              defaultValue={personalData?.middleName}
-              onChange={handleChange}
+              defaultValue={formik.value?.middleName}
+              onChange={formik.handleChange}
             />
-            {error && error.middleName && (
-              <p className="text-[12px] text-[#ff3333]">{error.middleName}</p>
+            {formik.errors.middleName && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.middleName}
+              </p>
             )}
           </div>
         </div>
@@ -98,11 +80,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="text"
               placeholder="Surname"
               name="surname"
-              defaultValue={personalData?.surname}
-              onChange={handleChange}
+              defaultValue={formik.values?.surname}
+              onChange={formik.handleChange}
             />
-            {error && error.surname && (
-              <p className="text-[12px] text-[#ff3333]">{error.surname}</p>
+            {formik.errors.surname && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.surname}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -114,11 +98,11 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               onBlur={(e) => (e.target.type = "text")}
               placeholder="Date of Birth"
               name="dob"
-              defaultValue={personalData?.dob}
-              onChange={handleChange}
+              defaultValue={formik.values?.dob}
+              onChange={formik.handleChange}
             />
-            {error && error.dob && (
-              <p className="text-[12px] text-[#ff3333]">{error.dob}</p>
+            {formik.errors.dob && (
+              <p className="text-[12px] text-[#ff3333]">{formik.errors.dob}</p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -127,8 +111,8 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 name="gender"
-                defaultValue={personalData?.gender}
-                onChange={handleChange}
+                defaultValue={formik.values?.gender}
+                onChange={formik.handleChange}
               >
                 <option>--- Select Gender ---</option>
                 <option value="male">Male</option>
@@ -143,8 +127,10 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </div>
-              {error && error.gender && (
-                <p className="text-[12px] text-[#ff3333]">{error.gender}</p>
+              {formik.errors.gender && (
+                <p className="text-[12px] text-[#ff3333]">
+                  {formik.errors.gender}
+                </p>
               )}
             </div>
           </div>
@@ -157,11 +143,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="email"
               placeholder="Email"
               name="email"
-              defaultValue={personalData?.email}
-              onChange={handleChange}
+              defaultValue={formik.values?.email}
+              onChange={formik.handleChange}
             />
-            {error && error.email && (
-              <p className="text-[12px] text-[#ff3333]">{error.email}</p>
+            {formik.errors.email && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.email}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -171,11 +159,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="tel"
               placeholder="+234 80 000 0000"
               name="phoneNumber"
-              defaultValue={personalData?.phoneNumber}
-              onChange={handleChange}
+              defaultValue={formik.values?.phoneNumber}
+              onChange={formik.handleChange}
             />
-            {error && error.phoneNumber && (
-              <p className="text-[12px] text-[#ff3333]">{error.phoneNumber}</p>
+            {formik.errors.phoneNumber && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.phoneNumber}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -187,12 +177,12 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               onFocus={(e) => (e.target.type = "date")}
               onBlur={(e) => (e.target.type = "text")}
               name="insuranceStartDate"
-              defaultValue={personalData?.insuranceStartDate}
-              onChange={handleChange}
+              defaultValue={formik.values?.insuranceStartDate}
+              onChange={formik.handleChange}
             />
-            {error && error.insuranceStartDate && (
+            {formik.errors.insuranceStartDate && (
               <p className="text-[12px] text-[#ff3333]">
-                {error.insuranceStartDate}
+                {formik.errors.insuranceStartDate}
               </p>
             )}
           </div>
@@ -204,8 +194,8 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 name="IdType"
-                defaultValue={personalData?.IdType}
-                onChange={handleChange}
+                defaultValue={formik.values?.IdType}
+                onChange={formik.handleChange}
               >
                 <option>--- Identification Type ---</option>
                 <option value="Driver License">Driver License</option>
@@ -224,8 +214,10 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
                 </svg>
               </div>
             </div>
-            {error && error.IdType && (
-              <p className="text-[12px] text-[#ff3333]">{error.IdType}</p>
+            {formik.errors.IdType && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.IdType}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -235,11 +227,13 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="text"
               name="IdNumber"
               placeholder="Identification Number"
-              defaultValue={personalData?.IdNumber}
-              onChange={handleChange}
+              defaultValue={formik.values?.IdNumber}
+              onChange={formik.handleChange}
             />
-            {error && error.IdNumber && (
-              <p className="text-[12px] text-[#ff3333]">{error.IdNumber}</p>
+            {formik.errors.IdNumber && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.IdNumber}
+              </p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -247,10 +241,11 @@ const PersonalInformation = ({ handlePersonalData, oldData, error }: any) => {
               type="file"
               className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
               name="file"
-              onChange={handleChange}
+              defaultValue={formik.values?.file}
+              onChange={formik.handleChange}
             />
-            {error && error.file && (
-              <p className="text-[12px] text-[#ff3333]">{error.file}</p>
+            {formik.errors.file && (
+              <p className="text-[12px] text-[#ff3333]">{formik.errors.file}</p>
             )}
           </div>
         </div>

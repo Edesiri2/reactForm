@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { steps } from "./Steps";
 
 import Benefit from "../benefit/Benefit";
@@ -13,13 +13,29 @@ const Onboarding = () => {
   const [isActive, setIsActive] = useState(0);
   const [isModal, setIsModal] = useState(false);
   const [modalData, setModalData] = useState<string[]>([]);
-  const [personalInformation, setPersonalInformation] = useState<any>(null);
+  const [personalInformation, setPersonalInformation] = useState<any>({
+    title: "",
+    firstName: "",
+    middleName: "",
+    surname: "",
+    dob: "",
+    gender: "",
+    email: "",
+    phoneNumber: "",
+    insuranceStartDate: "",
+    IdType: "",
+    IdNumber: "",
+    file: "",
+  });
   const [benefitData, setBenefitData] = useState<any>(null);
   const [error, setError] = useState({});
+
+  const personalDataRef = useRef<any>();
 
   const handleIsActive = (active: any) => {
     setIsActive(active);
   };
+
   const handlePersonalData = (data: any) => {
     setPersonalInformation(data);
     console.log(data);
@@ -32,32 +48,21 @@ const Onboarding = () => {
     setIsModal(!isModal);
   };
 
-  const handleNext = async (active: any) => {
-    const { error: pe, value } =
-      personalInformationValidation(personalInformation);
-
-    if (pe === undefined) {
-      setError({});
-      alert("Hello world!");
-      setOnboardingSteps((prevArray) => {
-        const updated = [...prevArray];
-        updated[active].isComplete = true;
-        return updated;
-      });
-      if (steps.length - 1 > active) {
-        setIsActive(active + 1);
-      }
-    } else {
-      const e: any[] = pe.details;
-      let newError = {};
-      e.forEach((item) => {
-        newError = { ...newError, [item.context.label]: item.message };
-      });
-
-      console.log("Error:", newError);
-      setError(newError);
+  const handleNext = async (values: any) => {
+    if (isActive === 0) {
+      personalFormik.handleSubmit();
     }
   };
+
+  const personalFormik = useFormik({
+    initialValues: personalInformation && personalInformation,
+    validationSchema: personalInformationValidation,
+    onSubmit: (values) => {
+      if (steps.length - 1 > isActive) {
+        setIsActive(isActive + 1);
+      }
+    },
+  });
 
   const handlePrev = (active: any) => {
     if (active > 0) {
@@ -128,6 +133,7 @@ const Onboarding = () => {
                   handlePersonalData={handlePersonalData}
                   oldData={personalInformation}
                   error={error}
+                  formik={personalFormik}
                 />
               </div>
             </div>
@@ -162,10 +168,9 @@ const Onboarding = () => {
           ) : null}
           {isActive < steps.length - 1 ? (
             <button
+              type="submit"
               className="bg-[#A73439] px-[2rem] py-[.5rem] rounded-lg text-[#fff] hover:bg-[#A73439]/90"
-              onClick={() => {
-                handleNext(isActive);
-              }}
+              onClick={handleNext}
             >
               Next
             </button>
