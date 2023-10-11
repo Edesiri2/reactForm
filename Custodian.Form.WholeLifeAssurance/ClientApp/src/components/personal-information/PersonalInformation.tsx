@@ -49,7 +49,7 @@ const PersonalInformation = ({ formik }: any) => {
               onChange={formik.handleChange}
               defaultValue={formik.values.firstName}
             />
-            {formik.errors.firstName && (
+            {formik.errors.firstName && formik.touched.firstName && (
               <p className="text-[12px] text-[#ff3333]">
                 {formik.errors.firstName}
               </p>

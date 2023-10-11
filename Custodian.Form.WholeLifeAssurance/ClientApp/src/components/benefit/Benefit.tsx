@@ -2,19 +2,7 @@ import { Formik } from "formik";
 import { Title } from "../data/title.data";
 import { useState } from "react";
 
-const Benefit = ({ handleBenefitData, oldData }: any) => {
-  const [benefitData, setBenefitData] = useState({
-    amountToSave: oldData&& oldData.amountToSave,
-    paymentFrequency: oldData&& oldData.paymentFrequency,
-    policyTerm: oldData&& oldData.policyTerm,
-    targetAmount: oldData&& oldData.targetAmount,
-    lifeSumAssured: oldData&& oldData.lifeSumAssured,
-  });
-
-  const handleChange = (e: any) => {
-    setBenefitData({ ...benefitData, [e.target.name]: e.target.value });
-    handleBenefitData({ ...benefitData, [e.target.name]: e.target.value });
-  };
+const Benefit = ({ formik }: any) => {
   return (
     <div>
       <div>
@@ -26,8 +14,8 @@ const Benefit = ({ handleBenefitData, oldData }: any) => {
               type="text"
               placeholder="Amount To Save"
               name="amountToSave"
-              onChange={handleChange}
-              defaultValue={benefitData?.amountToSave}
+              onChange={formik.handleChange}
+              defaultValue={formik.values.amountToSave}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -36,8 +24,8 @@ const Benefit = ({ handleBenefitData, oldData }: any) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 name="paymentFrequency"
-                onChange={handleChange}
-                defaultValue={benefitData?.paymentFrequency}
+                onChange={formik.handleChange}
+                defaultValue={formik.values.paymentFrequency}
               >
                 <option>--- Select Payment Frequency ---</option>
                 <option value="annualy">Annualy</option>
@@ -60,8 +48,8 @@ const Benefit = ({ handleBenefitData, oldData }: any) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 name="policyTerm"
-                onChange={handleChange}
-                defaultValue={benefitData?.policyTerm}
+                onChange={formik.handleChange}
+                defaultValue={formik.values.policyTerm}
               >
                 <option>--- Select Policy Term ---</option>
                 <option value="45">45</option>
@@ -87,8 +75,8 @@ const Benefit = ({ handleBenefitData, oldData }: any) => {
               type="text"
               placeholder="Target Amount"
               name="targetAmount"
-              onChange={handleChange}
-              defaultValue={benefitData?.targetAmount}
+              onChange={formik.handleChange}
+              defaultValue={formik.values.targetAmount}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -98,8 +86,8 @@ const Benefit = ({ handleBenefitData, oldData }: any) => {
               type="text"
               placeholder="Life Sum Assured"
               name="lifeSumAssured"
-              onChange={handleChange}
-              defaultValue={benefitData?.lifeSumAssured}
+              onChange={formik.handleChange}
+              defaultValue={formik.values.lifeSumAssured}
             />
           </div>
           <div className="w-full md:w-1/3 px-3">
