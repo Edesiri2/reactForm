@@ -8,7 +8,7 @@ import personalInformationValidation from "../../validation/personalData.validat
 import PersonalInformation from "../personal-information/PersonalInformation";
 import { useFormik } from "formik";
 
-const Onboarding = () => {
+const Onboarding = ({ handleScroll }: any) => {
   const [OnboardingSteps, setOnboardingSteps] = useState<any[]>(steps);
   const [isActive, setIsActive] = useState(0);
   const [isModal, setIsModal] = useState(false);
@@ -28,11 +28,11 @@ const Onboarding = () => {
     file: "",
   });
   const [benefitData, setBenefitData] = useState<any>({
-    amountToSave:"",
-    paymentFrequency:"",
-    policyTerm:"",
-    targetAmount:"",
-    lifeSumAssured:"",
+    amountToSave: "",
+    paymentFrequency: "",
+    policyTerm: "",
+    targetAmount: "",
+    lifeSumAssured: "",
   });
   const [error, setError] = useState({});
 
@@ -55,6 +55,7 @@ const Onboarding = () => {
   };
 
   const handleNext = async (values: any) => {
+    handleScroll(isActive);
     if (isActive === 0) {
       personalFormik.handleSubmit();
     }
@@ -154,8 +155,14 @@ const Onboarding = () => {
           ))}
         </div>
       </div>
-      <div className={isActive===2?"":` bg-[#fff] h-full w-[100vw - 20rem] md:overflow-hidden`}>
-        <div className="h-fit w-[100vw - 15rem] transition-all duration-1000 overflow-x-hidden">
+      <div
+        className={
+          isActive === 2
+            ? "bg-[#fff] h-full w-[100vw - 20rem]"
+            : ` bg-[#fff] h-full w-[100vw - 20rem] md:overflow-hidden`
+        }
+      >
+        <div className="md:h-full w-[100vw - 15rem] transition-all duration-1000">
           {isActive === 0 ? (
             <div className={`h-full w-full`}>
               <div className="">
@@ -180,7 +187,7 @@ const Onboarding = () => {
             </div>
           ) : null}
           {isActive === 2 ? (
-            <div className={`h-full w-full px-2 overflow-y-scroll `}>
+            <div className={`h-full w-full px-2 mb-5`}>
               <Summary
                 personalData={personalFormik.values}
                 benefitData={benefitFormik.values}
@@ -188,7 +195,13 @@ const Onboarding = () => {
             </div>
           ) : null}
         </div>
-        <div className={isActive===2?"":`absolute md:bottom-0 right-[50px] p-2`}>
+        <div
+          className={
+            isActive < steps.length - 1
+              ? ""
+              : `absolute md:bottom-0 right-[50px] p-2`
+          }
+        >
           {isActive > 0 ? (
             <button
               className="bg-[#444]/25 px-[2rem] py-[.5rem] rounded-lg  hover:bg-[#444]/30 mr-5"

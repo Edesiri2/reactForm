@@ -6,10 +6,10 @@ const Summary = ({ personalData, benefitData }: any) => {
   });
 
   return (
-    <div className="">
-      <div className="px-2 mb-6 ">
+    <div className="h-full">
+      {/* <div className="px-2 mb-6 ">
         <h1 className="text-2xl uppercase font-[500]">Summary</h1>
-      </div>
+      </div> */}
 
       {/* Personal Information Table */}
       <div className="mb-8">
