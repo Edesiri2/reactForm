@@ -1,12 +1,15 @@
+import React from "react";
 import { Formik } from "formik";
 import { Title } from "../data/title.data";
 import { useState } from "react";
 
 const Benefit = ({ formik }: any) => {
+
+
   return (
     <div>
       <div>
-        <div className="flex flex-row gap-2 mb-4">
+        <div className="flex flex-col md:flex-row gap-2 mb-4">
           <div className="w-full md:w-1/3 px-3">
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -17,6 +20,11 @@ const Benefit = ({ formik }: any) => {
               onChange={formik.handleChange}
               defaultValue={formik.values.amountToSave}
             />
+            {formik.errors.amountToSave && formik.touched.amountToSave && (
+              <p className="text-[12px] text-[#ff3333]">
+                {formik.errors.amountToSave}
+              </p>
+            )}
           </div>
           <div className="w-full md:w-1/3 px-3">
             <div className="relative">
@@ -25,7 +33,7 @@ const Benefit = ({ formik }: any) => {
                 id="grid-state"
                 name="paymentFrequency"
                 onChange={formik.handleChange}
-                defaultValue={formik.values.paymentFrequency}
+                defaultValue={formik.values?.paymentFrequency}
               >
                 <option>--- Select Payment Frequency ---</option>
                 <option value="annualy">Annualy</option>
@@ -49,7 +57,7 @@ const Benefit = ({ formik }: any) => {
                 id="grid-state"
                 name="policyTerm"
                 onChange={formik.handleChange}
-                defaultValue={formik.values.policyTerm}
+                defaultValue={formik.values?.policyTerm}
               >
                 <option>--- Select Policy Term ---</option>
                 <option value="45">45</option>
@@ -64,10 +72,15 @@ const Benefit = ({ formik }: any) => {
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </div>
+              {formik.errors.policyTerm && formik.touched.policyTerm && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
+                {formik.errors.policyTerm}
+              </p>
+            )}
             </div>
           </div>
         </div>
-        <div className="flex flex-row gap-2 mb-4">
+        <div className="flex flex-col md:flex-row gap-2 mb-4">
           <div className="w-full md:w-1/3 px-3">
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -76,8 +89,13 @@ const Benefit = ({ formik }: any) => {
               placeholder="Target Amount"
               name="targetAmount"
               onChange={formik.handleChange}
-              defaultValue={formik.values.targetAmount}
+              defaultValue={formik.values?.targetAmount}
             />
+             {formik.errors.targetAmount && formik.touched.targetAmount && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
+                {formik.errors.targetAmount}
+              </p>
+            )}
           </div>
           <div className="w-full md:w-1/3 px-3">
             <input
@@ -87,8 +105,13 @@ const Benefit = ({ formik }: any) => {
               placeholder="Life Sum Assured"
               name="lifeSumAssured"
               onChange={formik.handleChange}
-              defaultValue={formik.values.lifeSumAssured}
+              defaultValue={formik.values?.lifeSumAssured}
             />
+             {formik.errors.lifeSumAssured && formik.touched.lifeSumAssured && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
+                {formik.errors.lifeSumAssured}
+              </p>
+            )}
           </div>
           <div className="w-full md:w-1/3 px-3">
             <button className="w-full bg-[#A73439] px-[2rem] py-3 rounded-lg text-[#fff] hover:bg-[#A73439]/90">

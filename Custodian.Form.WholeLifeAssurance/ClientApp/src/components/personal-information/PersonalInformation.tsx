@@ -34,7 +34,7 @@ const PersonalInformation = ({ formik }: any) => {
               </div>
             </div>
             {formik.errors.title && (
-              <p className="text-[12px] text-[#ff3333]">
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.title}
               </p>
             )}
@@ -50,7 +50,7 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values.firstName}
             />
             {formik.errors.firstName && formik.touched.firstName && (
-              <p className="text-[12px] text-[#ff3333]">
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.firstName}
               </p>
             )}
@@ -65,8 +65,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.value?.middleName}
               onChange={formik.handleChange}
             />
-            {formik.errors.middleName && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.middleName && formik.touched.middleName && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.middleName}
               </p>
             )}
@@ -83,8 +83,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.surname}
               onChange={formik.handleChange}
             />
-            {formik.errors.surname && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.surname && formik.touched.surname && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.surname}
               </p>
             )}
@@ -101,8 +101,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.dob}
               onChange={formik.handleChange}
             />
-            {formik.errors.dob && (
-              <p className="text-[12px] text-[#ff3333]">{formik.errors.dob}</p>
+            {formik.errors.dob &&formik.touched.dob && (
+              <p className="text-[12px] capitalize text-[#ff3333]">{formik.errors.dob}</p>
             )}
           </div>
           <div className="w-full md:w-1/3 px-3">
@@ -127,8 +127,8 @@ const PersonalInformation = ({ formik }: any) => {
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </div>
-              {formik.errors.gender && (
-                <p className="text-[12px] text-[#ff3333]">
+              {formik.errors.gender && formik.touched.gender && (
+                <p className="text-[12px] capitalize text-[#ff3333]">
                   {formik.errors.gender}
                 </p>
               )}
@@ -146,8 +146,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.email}
               onChange={formik.handleChange}
             />
-            {formik.errors.email && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.email && formik.touched.email && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.email}
               </p>
             )}
@@ -162,8 +162,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.phoneNumber}
               onChange={formik.handleChange}
             />
-            {formik.errors.phoneNumber && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.phoneNumber && formik.touched.phoneNumber && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.phoneNumber}
               </p>
             )}
@@ -180,8 +180,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.insuranceStartDate}
               onChange={formik.handleChange}
             />
-            {formik.errors.insuranceStartDate && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.insuranceStartDate && formik.touched.insuranceStartDate&& (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.insuranceStartDate}
               </p>
             )}
@@ -214,8 +214,8 @@ const PersonalInformation = ({ formik }: any) => {
                 </svg>
               </div>
             </div>
-            {formik.errors.IdType && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.IdType && formik.touched.IdType && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.IdType}
               </p>
             )}
@@ -230,8 +230,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.IdNumber}
               onChange={formik.handleChange}
             />
-            {formik.errors.IdNumber && (
-              <p className="text-[12px] text-[#ff3333]">
+            {formik.errors.IdNumber && formik.touched.IdNumber && (
+              <p className="text-[12px] capitalize text-[#ff3333]">
                 {formik.errors.IdNumber}
               </p>
             )}
@@ -244,8 +244,8 @@ const PersonalInformation = ({ formik }: any) => {
               defaultValue={formik.values?.file}
               onChange={formik.handleChange}
             />
-            {formik.errors.file && (
-              <p className="text-[12px] text-[#ff3333]">{formik.errors.file}</p>
+            {formik.errors.file && formik.touched.file && (
+              <p className="text-[12px] capitalize text-[#ff3333]">{formik.errors.file}</p>
             )}
           </div>
         </div>
